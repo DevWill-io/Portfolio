@@ -4,6 +4,7 @@ Bem-vindo ao meu repositório de projetos! Sou estudante do IFRN e apaixonado po
 
 ![Status do Perfil](https://img.shields.io/badge/Status-Em_Desenvolvimento-blue)
 
+[![Netlify Status](https://api.netlify.com/api/v1/badges/c0a67cb5-fff4-4d62-9240-6346b178f558/deploy-status)](https://app.netlify.com/projects/devwill-io/deploys)
 ## 🛠️ Tecnologias e Ferramentas
 
 | Categoria | Tecnologias |
