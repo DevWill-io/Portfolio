@@ -1,4 +1,4 @@
-# Portfólio de [Williams]
+# Portfólio de Williams
 
 ​Bem-vindo ao meu repositório de projetos! Sou estudante do IFRN e atualmente foco em desenvolvimento Python e Front-end.
 
