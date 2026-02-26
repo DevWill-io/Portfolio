@@ -1,39 +1,104 @@
-<!doctype html>
- <html lang="pt-BR">
-  <head>
-   <meta charset="utf-8" >
-   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
-   <link rel="stylesheet" href="style.css">
-   <title>Meu Portfólio</title>
-  </head>
-
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Williams Silva | Desenvolvedor FullStack</title>
+    <link rel="stylesheet" href="styles/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&family=JetBrains+Mono&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
 <body>
-    <main class="container">
-        <header>
-            <img class="eu" src="imagens/eu.jpg" alt="Foto de Williams Silva">
-            <h1>Williams Silva</h1>
-            <p class="subtitle">Estudante de TI no IFRN</p>
-        </header>
 
-        <section class="bio">
-            <h2>Quem sou eu?</h2>
-            <p>Sou estudante do <strong>IFRN campus Caicó</strong>. Atualmente mergulhado no ecossistema <strong>Python, HTML, CSS e JavaScript</strong> através do Curso em Vídeo. Já conquistei os mundos 1 ao 3 de Python e sigo evoluindo!</p>
+    <div class="cursor-glow"></div>
+
+    <nav class="navbar">
+        <div class="nav-blur"></div>
+        <div class="nav-content">
+            <div class="logo">DevWill-<span>io</span></div>
+            <div class="menu">
+                <a href="#about">Sobre</a>
+                <a href="#projects">Projetos</a>
+                <a href="#contact" class="nav-btn">Contato</a>
+            </div>
+        </div>
+    </nav>
+
+    <main class="wrapper">
+        <section id="about" class="hero section-reveal">
+            <div class="hero-grid">
+                <div class="hero-info">
+                    <span class="status-pill"><span class="dot"></span> Estudante de TI @ IFRN</span>
+                    <h1>Desenvolvendo o amanhã com <span>precisão.</span></h1>
+                    <p>Focado em arquitetura de software com Python e experiências web imersivas com JavaScript, HTML e CSS.</p>
+                    <div class="stack-icons">
+                        <img src="https://cdn.simpleicons.org/python/00ff88" alt="Python">
+                        <img src="https://cdn.simpleicons.org/javascript/00ff88" alt="JS">
+                        <img src="https://cdn.simpleicons.org/html5/00ff88" alt="HTML">
+                        <img src="https://cdn.simpleicons.org/css/00ff88" alt="CSS">
+                    </div>
+                </div>
+                <div class="hero-visual">
+                    <div class="image-card">
+                        <img src="imagens/eu.jpg" alt="Williams Silva">
+                    </div>
+                </div>
+            </div>
         </section>
 
-        <section class="links">
-            <h2>Como falar comigo?</h2>
-            <ul>
-                <li><a href="https://instagram.com/wil_lians0" target="_blank"><img src="imagens/insta.png"> Instagram</a></li>
-                <li><a href="https://github.com/DevWill-io" target="_blank"><img src="imagens/git.png"> GitHub</a></li>
-                <li><a href="#" class="disabled"><img src="imagens/yt.png"> YouTube (Em breve)</a></li>
-                <li><a href="https://x.com/will62667" target="_blank"><img src="imagens/x.png"> X / Twitter</a></li>
-            </ul>
-        </section>
+        <section id="projects" class="projects section-reveal">
+            <div class="section-header">
+                <h2 class="title-bg">Projetos</h2>
+                <p>Onde a lógica encontra o design.</p>
+            </div>
 
-        <footer>
-            <p>&copy; 2026 | Desenvolvido por <a href="https://github.com/DevWill-io" target="_blank">DevWill-io</a></p>
-        </footer>
+            <div class="bento-grid">
+                <div class="bento-card large">
+                    <div class="card-content">
+                        <h3>Sistemas em Python</h3>
+                        <p>Nenhum sistema disponivel.</p>
+                    </div>
+                </div>
+                <div class="bento-card small">
+                    <div class="card-content">
+                        <h3>UI/UX Web</h3>
+                        <p>Nenhuma interface disponivel.</p>
+                    </div>
+                </div>
+                <div class="bento-card full">
+                    <div class="card-content">
+                        <h3>Projetos Full Stack</h3>
+                        <p>Nenhum projeto Full Stack no momento.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
     </main>
+    
+  <footer id="contact">
+    <div class="footer-content section-reveal">
+        <h2>Vamos criar algo lendário?</h2>
+        
+        <div class="social-links">
+            <a href="https://github.com/DevWill-io" target="_blank" aria-label="GitHub">
+                <i class="fa-brands fa-github"></i>
+            </a>
+            <a href="https://instagram.com/wil_lians0" target="_blank" aria-label="Instagram">
+                <i class="fa-brands fa-instagram"></i>
+            </a>
+            <a href="https://x.com/will62667" target="_blank" aria-label="X (Twitter)">
+                <i class="fa-brands fa-x"></i>
+            </a>
+            <a href="https://tiktok.com/@willians212" target="_blank" aria-label="TikTok">
+                <i class="fa-brands fa-tiktok"></i>
+            </a>
+        </div>
+        
+        <p>© 2026 DevWill-io. Todos os direitos reservados.</p>
+    </div>
+</footer>
+
+
+    <script src="scripts/script.js"></script>
 </body>
- </html>
+</html>
