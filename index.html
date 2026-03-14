@@ -7,23 +7,30 @@
     <link rel="stylesheet" href="styles/style.css">
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&family=JetBrains+Mono&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-
 </head>
 <body>
 
     <div class="cursor-glow"></div>
 
-    <nav class="navbar">
+    <header class="navbar">
         <div class="nav-blur"></div>
         <div class="nav-content">
             <div class="logo">DevWill-<span>io</span></div>
-            <div class="menu">
-                <a href="#about">Sobre</a>
-                <a href="#projects">Projetos</a>
-                <a href="#contact" class="nav-btn">Contato</a>
-            </div>
+            
+            <button class="hamburger" aria-label="Abrir menu" aria-expanded="false">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </button>
+
+            <nav class="menu nav-menu">
+                <a href="#about" class="nav-link">Sobre</a>
+                <a href="#skills" class="nav-link">Habilidades</a>
+                <a href="#projects" class="nav-link">Projetos</a>
+                <a href="#contact" class="nav-btn nav-link">Contato</a>
+            </nav>
         </div>
-    </nav>
+    </header>
 
     <main class="wrapper">
         <section id="about" class="hero section-reveal">
@@ -33,16 +40,45 @@
                     <h1>Desenvolvendo o amanhã com <span>precisão.</span></h1>
                     <p>Focado em arquitetura de software com Python e experiências web imersivas com JavaScript, HTML e CSS.</p>
                     <div class="stack-icons">
-                        <img src="https://cdn.simpleicons.org/python/00ff88" alt="Python">
-                        <img src="https://cdn.simpleicons.org/javascript/00ff88" alt="JS">
-                        <img src="https://cdn.simpleicons.org/html5/00ff88" alt="HTML">
-                        <img src="https://cdn.simpleicons.org/css/00ff88" alt="CSS">
+                        <img src="https://cdn.simpleicons.org/python/00ff88" alt="Ícone Python" title="Python">
+                        <img src="https://cdn.simpleicons.org/javascript/00ff88" alt="Ícone JavaScript" title="JavaScript">
+                        <img src="https://cdn.simpleicons.org/html5/00ff88" alt="Ícone HTML5" title="HTML5">
+                        <img src="https://cdn.simpleicons.org/css/00ff88" alt="Ícone CSS3" title="CSS3">
                     </div>
                 </div>
                 <div class="hero-visual">
                     <div class="image-card">
-                        <img src="imagens/eu.jpg" alt="Williams Silva">
+                        <img src="imagens/eu.jpg" alt="Foto de Williams Silva">
                     </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="skills" class="skills section-reveal">
+            <div class="section-header">
+                <h2 class="title-bg">Habilidades <span>.</span></h2>
+                <p>Minha caixa de ferramentas técnica.</p>
+            </div>
+            <div class="skills-grid">
+                <div class="skill-card">
+                    <i class="fa-brands fa-html5" style="color: #E34F26;"></i>
+                    <h3>Front-end</h3>
+                    <p>HTML5, CSS3, JavaScript (ES6+)</p>
+                </div>
+                <div class="skill-card">
+                    <i class="fa-brands fa-python" style="color: #3776AB;"></i>
+                    <h3>Back-end & Scripting</h3>
+                    <p>Python, Lógica de Programação</p>
+                </div>
+                <div class="skill-card">
+                    <i class="fa-solid fa-database" style="color: var(--accent-color);"></i>
+                    <h3>Ferramentas</h3>
+                    <p>Git, GitHub, VS Code</p>
+                </div>
+                 <div class="skill-card">
+                    <i class="fa-solid fa-terminal" style="color: var(--text-muted);"></i>
+                    <h3>Outros</h3>
+                    <p>Procurando Habilidade...</p>
                 </div>
             </div>
         </section>
@@ -54,51 +90,62 @@
             </div>
 
             <div class="bento-grid">
-                <div class="bento-card large">
-                    <div class="card-content">
-                        <h3>Site Turma 2V infoweb 2026</h3>
-                        <p>Desenvolvi o Site da Turma <a style=""id="2v" target="_blank" href="https://github.com/Infoweb2026-2V/SITE-2V">2V 2026</a>, completamente front-end e desenvolvido para mostrar projetos da turma.</p>
+                <article class="bento-card large project-featured">
+                    <div class="project-image-container">
+                        <img src="imagens/Site2v.jpg" alt="Preview do Site Turma 2V Infoweb 2026" loading="lazy">
                     </div>
-                </div>
-                <div class="bento-card small">
-                    <div class="card-content">
-                        <h3>Nenhum Projeto Encontrado</h3>
-                        <p>Nenhuma Projeto disponivel.</p>
+                    <div class="card-content project-content-padded">
+                        <div class="project-tags">
+                            <span>HTML</span>
+                            <span>CSS</span>
+                            <span>JavaScript</span>
+                        </div>
+                        <h3>Site Turma 2V Infoweb 2026</h3>
+                        <p>Desenvolvi o Site da Turma 2V 2026, uma aplicação front-end focada em apresentar os projetos e a identidade da turma de forma responsiva.</p>
+                        <a href="https://github.com/Infoweb2026-2V/SITE-2V" target="_blank" rel="noopener noreferrer" class="btn-project">
+                            Ver Código <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                        </a>
                     </div>
-                </div>
-                <div class="bento-card full">
+                </article>
+
+                <article class="bento-card small">
                     <div class="card-content">
-                        <h3>Nenhum Projeto Encontrado</h3>
-                        <p>Nenhum projeto disponivel no momento.</p>
+                        <h3>Em Breve</h3>
+                        <p>Novo projeto em desenvolvimento...</p>
                     </div>
-                </div>
+                </article>
+                <article class="bento-card full">
+                    <div class="card-content">
+                        <h3>Disponível para Oportunidades</h3>
+                        <p>Tem um projeto em mente? Vamos transformar sua ideia em código.</p>
+                    </div>
+                </article>
             </div>
         </section>
     </main>
-    
-  <footer id="contact">
-    <div class="footer-content section-reveal">
-        <h2>Vamos criar algo lendário?</h2>
-        
-        <div class="social-links">
-            <a href="https://github.com/DevWill-io" target="_blank" aria-label="GitHub">
-                <i class="fa-brands fa-github"></i>
-            </a>
-            <a href="https://instagram.com/wil_lians0" target="_blank" aria-label="Instagram">
-                <i class="fa-brands fa-instagram"></i>
-            </a>
-            <a href="https://x.com/will62667" target="_blank" aria-label="X (Twitter)">
-                <i class="fa-brands fa-x"></i>
-            </a>
-            <a href="https://tiktok.com/@willians212" target="_blank" aria-label="TikTok">
-                <i class="fa-brands fa-tiktok"></i>
-            </a>
-        </div>
-        
-        <p>© 2026 DevWill-io. Todos os direitos reservados.</p>
-    </div>
-</footer>
 
+    <footer id="contact">
+        <div class="footer-content section-reveal">
+            <h2>Vamos criar algo lendário?</h2>
+            
+            <div class="social-links">
+                <a href="https://github.com/DevWill-io" target="_blank" rel="noopener noreferrer" aria-label="Acessar GitHub">
+                    <i class="fa-brands fa-github"></i>
+                </a>
+                <a href="https://instagram.com/wil_lians0" target="_blank" rel="noopener noreferrer" aria-label="Acessar Instagram">
+                    <i class="fa-brands fa-instagram"></i>
+                </a>
+                <a href="https://x.com/will62667" target="_blank" rel="noopener noreferrer" aria-label="Acessar X (Twitter)">
+                    <i class="fa-brands fa-x"></i>
+                </a>
+                <a href="https://tiktok.com/@willians212" target="_blank" rel="noopener noreferrer" aria-label="Acessar TikTok">
+                    <i class="fa-brands fa-tiktok"></i>
+                </a>
+            </div>
+
+            <p>© 2026 DevWill-io. Todos os direitos reservados.</p>
+        </div>
+    </footer>
 
     <script src="scripts/script.js"></script>
 </body>
