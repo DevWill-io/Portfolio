@@ -1,6 +1,6 @@
 /* =========================================
-   VARIÁVEIS E RESET GLOBAL
-   ========================================= */
+   1. VARIÁVEIS E RESET GLOBAL
+========================================= */
 :root {
     --bg-color: #050505;
     --surface-color: #111111;
@@ -10,6 +10,7 @@
     --text-muted: #a0a0a0;
     --font-heading: 'Outfit', sans-serif;
     --font-mono: 'JetBrains Mono', monospace;
+    --transition-smooth: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
 * {
@@ -20,19 +21,20 @@
 
 html {
     scroll-behavior: smooth;
+    scroll-padding-top: 100px; /* Evita que o cabeçalho cubra o título ao clicar no menu */
 }
 
 body {
     background-color: var(--bg-color);
     color: var(--text-main);
-    font-family: 'Outfit', sans-serif;
+    font-family: var(--font-heading);
     line-height: 1.6;
     overflow-x: hidden;
 }
 
 /* =========================================
-   EFEITO DO MOUSE (CURSOR GLOW)
-   ========================================= */
+   2. EFEITO DO MOUSE (CURSOR GLOW)
+========================================= */
 .cursor-glow {
     position: fixed;
     top: 0;
@@ -42,14 +44,14 @@ body {
     background: radial-gradient(circle, rgba(0, 255, 136, 0.15) 0%, rgba(0, 0, 0, 0) 70%);
     border-radius: 50%;
     transform: translate(-50%, -50%);
-    pointer-events: none; /* Para não atrapalhar os cliques */
+    pointer-events: none;
     z-index: -1;
     transition: width 0.3s, height 0.3s;
 }
 
 /* =========================================
-   NAVBAR (CABEÇALHO)
-   ========================================= */
+   3. NAVBAR E MENU
+========================================= */
 .navbar {
     position: fixed;
     top: 0;
@@ -64,7 +66,7 @@ body {
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(5, 5, 5, 0.6);
+    background: rgba(5, 5, 5, 0.75);
     backdrop-filter: blur(12px);
     border-bottom: 1px solid var(--border-color);
     z-index: -1;
@@ -83,6 +85,7 @@ body {
     font-size: 1.5rem;
     font-weight: 800;
     letter-spacing: -1px;
+    z-index: 1002; /* Fica acima do menu mobile */
 }
 
 .logo span {
@@ -100,11 +103,27 @@ body {
     text-decoration: none;
     font-size: 0.95rem;
     font-weight: 600;
-    transition: 0.3s;
+    transition: color 0.3s;
+    position: relative;
 }
 
-.menu a:hover {
+.menu a:hover, .menu a.active {
     color: var(--text-main);
+}
+
+.menu a.active {
+    color: var(--accent-color);
+}
+
+.menu a:not(.nav-btn).active::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: var(--accent-color);
+    border-radius: 4px;
 }
 
 .menu a.nav-btn {
@@ -113,16 +132,38 @@ body {
     padding: 8px 20px;
     border-radius: 30px;
     border: 1px solid rgba(0, 255, 136, 0.3);
+    transition: var(--transition-smooth);
 }
 
 .menu a.nav-btn:hover {
     background: var(--accent-color);
     color: var(--bg-color);
+    transform: translateY(-2px);
+}
+
+/* Botão Hambúrguer (Oculto no Desktop) */
+.hamburger {
+    display: none;
+    background: none;
+    border: none;
+    cursor: pointer;
+    z-index: 1002;
+    padding: 5px;
+}
+
+.bar {
+    display: block;
+    width: 25px;
+    height: 3px;
+    margin: 5px auto;
+    background-color: var(--text-main);
+    border-radius: 4px;
+    transition: all 0.3s ease-in-out;
 }
 
 /* =========================================
-   LAYOUT GERAL E SEÇÕES
-   ========================================= */
+   4. LAYOUT GERAL E SEÇÕES
+========================================= */
 .wrapper {
     max-width: 1200px;
     margin: 0 auto;
@@ -130,17 +171,36 @@ body {
 }
 
 section {
-    padding: 120px 0;
+    padding: 100px 0;
+}
+
+.section-header {
+    margin-bottom: 50px;
+}
+
+.section-header h2 {
+    font-size: clamp(2.5rem, 4vw, 3rem);
+    font-weight: 800;
+    margin-bottom: 10px;
+}
+
+.section-header h2 span {
+    color: var(--accent-color);
+}
+
+.section-header p {
+    color: var(--text-muted);
+    font-family: var(--font-mono);
 }
 
 /* =========================================
-   HERO SECTION (SOBRE)
-   ========================================= */
+   5. HERO SECTION (SOBRE)
+========================================= */
 .hero {
     min-height: 100vh;
     display: flex;
     align-items: center;
-    padding-top: 150px;
+    padding-top: 120px;
 }
 
 .hero-grid {
@@ -174,9 +234,8 @@ section {
 }
 
 @keyframes pulse {
-    0% { transform: scale(0.95); opacity: 1; }
+    0%, 100% { transform: scale(0.95); opacity: 1; }
     50% { transform: scale(1.2); opacity: 0.7; }
-    100% { transform: scale(0.95); opacity: 1; }
 }
 
 .hero h1 {
@@ -204,14 +263,15 @@ section {
 
 .stack-icons img {
     height: 35px;
-    opacity: 0.8;
-    transition: 0.3s;
-    filter: drop-shadow(0 0 5px rgba(0, 255, 136, 0.2));
+    opacity: 0.7;
+    transition: var(--transition-smooth);
+    filter: drop-shadow(0 0 5px rgba(0, 0, 0, 0.5));
 }
 
 .stack-icons img:hover {
     transform: translateY(-5px);
     opacity: 1;
+    filter: drop-shadow(0 0 10px rgba(0, 255, 136, 0.4));
 }
 
 .image-card img {
@@ -229,27 +289,53 @@ section {
 }
 
 /* =========================================
-   PROJETOS (BENTO GRID)
-   ========================================= */
-.section-header {
-    margin-bottom: 50px;
+   6. HABILIDADES (SKILLS)
+========================================= */
+.skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 25px;
 }
 
-.section-header h2 {
-    font-size: 3rem;
-    font-weight: 800;
+.skill-card {
+    background: var(--surface-color);
+    border: 1px solid var(--border-color);
+    padding: 30px 25px;
+    border-radius: 20px;
+    text-align: center;
+    transition: var(--transition-smooth);
+}
+
+.skill-card:hover {
+    border-color: var(--accent-color);
+    transform: translateY(-5px);
+    background: linear-gradient(145deg, var(--surface-color), rgba(0, 255, 136, 0.05));
+    box-shadow: 0 10px 30px rgba(0, 255, 136, 0.05);
+}
+
+.skill-card i {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+}
+
+.skill-card h3 {
     margin-bottom: 10px;
+    font-size: 1.1rem;
 }
 
-.section-header p {
+.skill-card p {
     color: var(--text-muted);
+    font-size: 0.9rem;
     font-family: var(--font-mono);
 }
 
+/* =========================================
+   7. PROJETOS (BENTO GRID)
+========================================= */
 .bento-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    grid-template-rows: repeat(2, 250px);
+    grid-template-rows: repeat(2, minmax(250px, auto));
     gap: 20px;
 }
 
@@ -258,10 +344,9 @@ section {
     border: 1px solid var(--border-color);
     border-radius: 24px;
     padding: 40px;
-    transition: 0.4s;
+    transition: var(--transition-smooth);
     display: flex;
     flex-direction: column;
-    justify-content: flex-end;
     position: relative;
     overflow: hidden;
 }
@@ -272,15 +357,63 @@ section {
     box-shadow: 0 10px 30px rgba(0, 255, 136, 0.05);
 }
 
-/* Controle dos tamanhos do grid */
-.bento-card.large { grid-column: span 2; }
-.bento-card.small { grid-column: span 1; }
-.bento-card.full { grid-column: span 3; }
+.bento-card.large { grid-column: span 2; grid-row: span 2; }
+.bento-card.small { grid-column: span 1; justify-content: flex-end; }
+.bento-card.full { grid-column: span 1; justify-content: flex-end; }
+
+/* Estilos Específicos do Card com Imagem */
+.project-featured {
+    padding: 0;
+}
+
+.project-image-container {
+    width: 100%;
+    height: 50%;
+    min-height: 250px;
+    overflow: hidden;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.project-image-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: top center;
+    transition: transform 0.6s ease;
+}
+
+.project-featured:hover .project-image-container img {
+    transform: scale(1.05);
+}
+
+.project-content-padded {
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    flex-grow: 1;
+}
+
+.project-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 15px;
+}
+
+.project-tags span {
+    font-size: 0.75rem;
+    font-family: var(--font-mono);
+    color: var(--accent-color);
+    background: rgba(0, 255, 136, 0.08);
+    padding: 5px 12px;
+    border-radius: 50px;
+    border: 1px solid rgba(0, 255, 136, 0.2);
+}
 
 .card-content h3 {
     font-size: 1.5rem;
     margin-bottom: 10px;
-    color: var(--text-main);
 }
 
 .card-content p {
@@ -288,9 +421,32 @@ section {
     font-size: 0.95rem;
 }
 
+.btn-project {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 20px;
+    padding: 10px 24px;
+    background: transparent;
+    color: var(--text-main);
+    border: 1px solid var(--border-color);
+    border-radius: 50px;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.9rem;
+    transition: var(--transition-smooth);
+    width: fit-content;
+}
+
+.btn-project:hover {
+    background: var(--accent-color);
+    color: #000;
+    border-color: var(--accent-color);
+}
+
 /* =========================================
-   FOOTER (CONTATO)
-   ========================================= */
+   8. FOOTER (CONTATO)
+========================================= */
 footer {
     padding: 100px 20px 40px;
     text-align: center;
@@ -322,7 +478,7 @@ footer {
     font-size: 1.8rem;
     text-decoration: none;
     border: 1px solid var(--border-color);
-    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275); /* Efeito de pulo */
+    transition: var(--transition-smooth);
 }
 
 .social-links a:hover {
@@ -340,12 +496,12 @@ footer p {
 }
 
 /* =========================================
-   ANIMAÇÕES E UTILITÁRIOS
-   ========================================= */
+   9. ANIMAÇÕES GERAIS
+========================================= */
 .section-reveal {
     opacity: 0;
-    transform: translateY(50px);
-    transition: all 1s cubic-bezier(0.5, 0, 0, 1);
+    transform: translateY(40px);
+    transition: all 0.8s cubic-bezier(0.5, 0, 0, 1);
 }
 
 .section-reveal.active {
@@ -354,9 +510,51 @@ footer p {
 }
 
 /* =========================================
-   RESPONSIVIDADE (MOBILE E TABLET)
-   ========================================= */
+   10. MEDIA QUERIES (RESPONSIVIDADE)
+========================================= */
 @media (max-width: 900px) {
+    /* Exibir Menu Mobile */
+    .hamburger {
+        display: block;
+    }
+
+    .hamburger.active .bar:nth-child(2) { opacity: 0; }
+    .hamburger.active .bar:nth-child(1) { transform: translateY(8px) rotate(45deg); background-color: var(--accent-color); }
+    .hamburger.active .bar:nth-child(3) { transform: translateY(-8px) rotate(-45deg); background-color: var(--accent-color); }
+
+    .nav-menu {
+        position: fixed;
+        left: -100%;
+        top: 75px;
+        gap: 0;
+        flex-direction: column;
+        background-color: var(--bg-color);
+        width: 100%;
+        height: calc(100vh - 75px);
+        text-align: center;
+        transition: 0.4s ease;
+        padding-top: 40px;
+        border-top: 1px solid var(--border-color);
+    }
+
+    .nav-menu.active {
+        left: 0;
+    }
+
+    .nav-menu .nav-link {
+        display: block;
+        padding: 20px 0;
+        font-size: 1.3rem;
+        width: 100%;
+    }
+
+    .menu a.nav-btn {
+        margin-top: 20px;
+        display: inline-block;
+        width: auto;
+    }
+
+    /* Layout Ajustes */
     .hero-grid {
         grid-template-columns: 1fr;
         text-align: center;
@@ -372,7 +570,7 @@ footer p {
     }
 
     .image-card img {
-        max-width: 350px;
+        max-width: 300px;
     }
 
     .bento-grid {
@@ -382,12 +580,10 @@ footer p {
 
     .bento-card.large, .bento-card.small, .bento-card.full {
         grid-column: span 1;
-        min-height: 200px;
+        grid-row: auto;
     }
-}
 
-@media (max-width: 600px) {
-    .menu {
-        display: none; /* Em telas muito pequenas, o ideal seria fazer um menu hambúrguer futuramente */
+    .project-image-container {
+        min-height: 200px;
     }
 }
